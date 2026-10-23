@@ -1,27 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Mithu's World - Varahi Amma & Lavan Birthday</title>
+<title>Happy Birthday Lavan - 30th Birthday</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{background:black; color:white; text-align:center; font-family:Arial; margin:0; padding:20px;}
+.birthday{background:linear-gradient(135deg,#0b6e4f,#1a9a6b); color:gold; padding:30px; border-radius:25px; margin:20px auto; max-width:650px; box-shadow:0 0 30px gold;}
+img{width:90%; max-width:500px; border-radius:20px; border:5px solid gold; margin:20px auto; display:block;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.balloon{font-size:40px; animation:float 3s infinite; display:inline-block;}
+</style>
 </head>
-<body style="background:black; color:white; text-align:center; font-family:Arial;">
-
-<!-- YOUR AMMA SECTION -->
-<div class="card">
-<img src="photo1.jpg">
-<h2>Varahi Amma Blessings for My Amma</h2>
-<p>Maa Amma chaala great! Love you Amma!</p>
-</div>
-
-<!-- LAVAN BIRTHDAY FINAL SECTION -->
-<div class="birthday" style="background:#0b6e4f; color:gold; padding:30px; border-radius:20px; margin:30px auto; max-width:600px;">
+<body>
+<div class="birthday">
+  <div><span class="balloon">🎈</span> <span class="balloon" style="animation-delay:0.5s">🎂</span> <span class="balloon" style="animation-delay:1s">🎈</span></div>
   <h1>🎂 Happy 30th Birthday Lavan! 🎂</h1>
   <h3 style="color:white;">30th October - Villa Celebration</h3>
-  <img src="lavan.png" style="width:90%; max-width:500px; border-radius:22px; border:5px solid gold; margin:20px auto; display:block;">
-  <p style="color:white; font-size:18px;">Golden cake, golden balloons, tea garden magic!</p>
-  <div style="background:white; color:black; padding:15px; border-radius:15px; margin-top:15px;">
-    <p>🎵 Happy Birthday to you, dear Lavan,<br>30 candles shining bright! 🎵</p>
+  <img src="lavan.png">
+  <p style="color:white; font-size:20px; font-weight:bold;">Golden cake, golden balloons, tea garden magic!</p>
+  <div style="background:white; color:#0b6e4f; padding:20px; border-radius:15px; margin-top:20px; font-size:18px;">
+    <p>🎵 Happy Birthday to you, dear Lavan,<br>30 candles shining bright,<br>Wishes from Mithu's World! 🎵</p>
   </div>
-  <p style="margin-top:20px;"><b>From - Neeharika ❤️ Mithu's World</b></p>
+  <p style="margin-top:25px; font-size:18px;"><b>From - Neeharika ❤️ & Mithu's World</b></p>
+  <button onclick="blast()" style="padding:12px 25px; background:gold; color:black; border:none; border-radius:25px; font-size:18px; font-weight:bold; margin-top:15px; cursor:pointer;">🎉 Click for Surprise 🎉</button>
 </div>
-
+<canvas id="confetti" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>
+<script>
+function blast(){
+  const c=document.getElementById('confetti'); c.width=innerWidth; c.height=innerHeight;
+  const ctx=c.getContext('2d'); let pieces=[];
+  for(let i=0;i<150;i++)pieces.push({x:Math.random()*c.width,y:-20,r:Math.random()*8+4,c:`hsl(${Math.random()*60+40},100%,50%)`,vy:Math.random()*5+2,vx:Math.random()*4-2});
+  function draw(){ctx.clearRect(0,0,c.width,c.height); pieces.forEach(p=>{ctx.fillStyle=p.c; ctx.fillRect(p.x,p.y,p.r,p.r); p.y+=p.vy; p.x+=p.vx; if(p.y>c.height)p.y=-20}); requestAnimationFrame(draw);} draw();
+  setTimeout(()=>ctx.clearRect(0,0,c.width,c.height),4000);
+}
+window.onload=()=>setTimeout(blast,800);
+</script>
 </body>
 </html>
